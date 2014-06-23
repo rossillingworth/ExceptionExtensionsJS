@@ -26,7 +26,8 @@ var EXCEPTION = {
         var htmlElement = document.getElementsByTagName("HTML")[0];
         var attr = !!htmlElement && htmlElement.getAttribute("data-ee");
         var conf = !!attr && attr.valueOf().toUpperCase();
-        EXCEPTION.debug = !(!!conf) || (!!conf && !!(conf != "PROD" && conf != "PRODUCTION"));
+        var hash = window.location.href.indexOf("debug") > 0;
+        EXCEPTION.debug = !(!!conf) || hash || (!!conf && !!(conf != "PROD" && conf != "PRODUCTION"));
         !(!!conf) && console.error("ExceptionExtensions config attribute ('data-ee=\"\"') missing from HTML element")
         EXCEPTION.debug && console.warn("ExceptionExtensions debugging is ON");
         !EXCEPTION.debug && console.log("ExceptionExtensions debugging is OFF");
