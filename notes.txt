@@ -1,0 +1,30 @@
+
+
+Bower
+======
+
+To init bower.json
+----------------------
+go to top dir
+>bower init
+
+
+
+To register package with BOWER
+----------------------------------
+bower register <my-package-name> <git-endpoint>
+
+
+
+Shields for GitHub
+=======================
+badge.fury.io   - checks service status
+shields.io      - simple text badges
+
+
+
+Markdown
+================
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images
+
+
