@@ -1,0 +1,25 @@
+{
+    "name": "ExceptionExtensionsJS",
+    "version": "1.0.0",
+    "homepage": "https://github.com/rossillingworth/ExceptionExtensionsJS",
+    "authors": [
+        "Ross Illingworth <ross.illingworth@techmale.com>"
+    ],
+    "description": "Simplified Design by Contract for Javascript",
+    "main": "ExceptionExtensions.js",
+    "keywords": [
+        "Design by Contract",
+        "Contract",
+        "Exception",
+        "when"
+
+    ],
+    "license": "Mozilla Public License Version 2.0",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
