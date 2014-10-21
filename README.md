@@ -27,3 +27,16 @@ function doesSomething(myArg){
     return result
 }
 ```
+
+###Debugging in Production
+EE-JS can be switched to OFF by default for production systems. 
+
+But when we get bugs in production, we need to identify the cause as quickly as possible.
+
+Simply add 'debugger' to the url, and ExceptionExtensionsJS will be active when the page loads. Remember that you need to have the console open for the debugger to start.
+
+ie: 
+change
+/some/thing/else.html 
+to
+/some/thing/else.html?debugger
