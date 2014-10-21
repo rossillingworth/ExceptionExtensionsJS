@@ -1,5 +1,8 @@
 /**
- * MPL 2 license
+ * Please assume an MPL 2 license
+  *
+ * Created by: Ross Illingworth
+ * If you need a different license, please get in touch.
  */
 
 var EXCEPTION = {
@@ -9,8 +12,8 @@ var EXCEPTION = {
         if(!!condition){
             if(EXCEPTION.debug){
                 alert(message);
-                // if you have got here, you have a contract failure
-                // Use your debugger stack trace to identify the cause
+                // You have arrived here, so you have a design-by-contract failure
+                // Use the stack trace (in debugger) to identify the cause
                 debugger;
             }
             throw new Error(message);
@@ -23,14 +26,18 @@ var EXCEPTION = {
  */
 (function(){
     try{
+        // check html element for attribute
         var htmlElement = document.getElementsByTagName("HTML")[0];
         var attr = !!htmlElement && htmlElement.getAttribute("data-ee");
         var conf = !!attr && attr.valueOf().toUpperCase();
-        var hash = (window.location.href.indexOf("debug") > 0) || (window.location.href.indexOf("DEBUG") > 0);
+        // check url for "debugger"
+        var hash = (window.location.href.indexOf("debugger") > 0) || (window.location.href.indexOf("DEBUGGER") > 0);
+        // update state
         EXCEPTION.debug = !(!!conf) || hash || (!!conf && !!(conf != "PROD" && conf != "PRODUCTION"));
-        !(!!conf) && console.error("ExceptionExtensions config attribute ('data-ee=\"\"') missing from HTML element")
-        EXCEPTION.debug && console.warn("ExceptionExtensions debugging is ON");
-        !EXCEPTION.debug && console.log("ExceptionExtensions debugging is OFF");
+        // flag if missing attribute config (ie: for production systems)
+        !(!!conf) && console.warn("ExceptionExtensions config attribute (data-ee=\"\") missing from the 'html' element")
+        // inform developer of EE state
+        console.log("ExceptionExtensions debugging is " + (EXCEPTION.debug?"ON":"OFF"));
     }catch(e){
         console.error(e);
     }
@@ -38,7 +45,7 @@ var EXCEPTION = {
 
 
 if(!window["_"]){
-    if(console && console.log){
+    if(console && console.log && EXCEPTION.debug){
         console.log("ExceptionExtensions recommends you use lodash.");
         console.log("Lodash makes pre & post conditions much easier, especially verifying variable types.");
     }
